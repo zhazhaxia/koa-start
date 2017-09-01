@@ -1,7 +1,7 @@
 const Koa = require('koa')
 const static = require('koa-static')//静态资源
 const app = new Koa()
-const router = require('./routers/index')
+const router = require('./routes/index')
 const bodyParser = require('koa-bodyparser')
 
 app.use(bodyParser())

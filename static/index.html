@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-  <meta charset="utf-8" />
-  <title>koa 静态文件</title>
+    <meta charset="utf-8">
+    <title>koa test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="">
+    <meta name="Copyright" content="">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="applicable-device" content="pc,mobile">
+    <script type="text/javascript" src="./public/js/jquery-3.0.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="./public/css/bootstrap.css">
 </head>
 <body>
-<h1>koa 静态文件测试</h1>
+<span class="btn btn-info j_get">get</span>
+<span class="btn btn-info j_post">post</span>
+<script type="text/javascript">
+(function () {
+
+	var exports = {
+		init:function () {
+			this.bind();
+		},
+		bind:function () {
+			var self = this;
+			$(document.body).on('click', '.j_get', function() {
+				console.log('get')
+				self.getTest();
+			}).on('click', '.j_post', function() {
+				console.log('post')
+				self.postTest();
+			})
+		},
+		getTest:function () {
+			$.ajax({
+				url:'http://127.0.0.1:3030/router/test/getTest',
+				data:{
+					name:'milu'
+				},
+				success:function (res) {
+					console.log('res',res)
+				},
+				error:function (err) {
+					console.log('err',err)
+				}
+			})
+		},
+		postTest:function () {
+			
+		}
+	}
+	exports.init();
+})()
+</script>
 </body>
+
 </html>
