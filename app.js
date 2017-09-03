@@ -14,4 +14,6 @@ app.use(async (ctx) => {
   ctx.status = 404
   ctx.body = `404 Not Found `
 })
-app.listen(3030)
+var port = 3030;
+app.listen(port)
+console.log('server is runing on :port '+port)
