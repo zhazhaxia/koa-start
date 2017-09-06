@@ -86,7 +86,7 @@
 
 - 可能出现xss的地方
 
-		页面中任何可以写入数据的地方
+	页面中任何可以写入数据的地方
 
 - 危害
 
@@ -103,6 +103,57 @@
 
 ## xss漏洞挖掘
 
+任何可以输入的地方，并且输入可以在页面中出现
 
+尝试不同的payload进行探索
 
+- url
+	
+	<scheme>://<netloc>/<path>?<query>#<fragment>
+
+- HTML
+
+	html标签之间，<title></title>,<a></a>...
+
+	html标签之内，<input type="text" value="" />，属性，事件
+
+- 请求
+
+	看你存在存储型xss
+
+- DOM渲染
+
+	- html与javascript的编码机制
+
+		html: &#xH(十六进制)、&#D(十进制)、实体编码htmlEncode
+
+		javascript：Unicode形式\uH(十六进制)、\xH(普通十六进制)、纯转意\',\",\<,\>
+
+	- 具备HtmlEndoce功能的标签
+
+		<textarea>,<title>,<iframe>
+
+		webkit内核差异导致出现encode的漏洞
+
+- 绕过浏览器xss filter
+
+	针对同域的白名单，ie:referrer同域，chrome：script[src]同域
+
+- 混淆代码
+
+	大小写、编码混用
+
+- payload
+
+	- 常用的payload
+
+		```
+
+		```
+
+	- payload 的成功率
+
+		`" onclick=alert(9) "` 成功率高
+
+		`><script>alert(9)</script>`效果好
 
