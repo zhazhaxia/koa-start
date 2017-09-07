@@ -119,7 +119,11 @@
 
 - 请求
 
-	看你存在存储型xss
+	可能存在存储型xss
+
+	表单提交
+
+	数据请求，get
 
 - DOM渲染
 
@@ -170,3 +174,16 @@ xss challenges:http://xss-quiz.int21h.jp/
 xss 挑战：http://test.xss.tv/
 
 xss编解码：http://xss.tv/index.php?do=encode-1
+
+https://www.sec-wiki.com/topic/index/tag/websec
+
+https://xianzhi.aliyun.com/forum/
+
+http://www.nsoad.com/
+
+https://www.easyaq.com/
+
+http://blog.knownsec.com/
+
+
+工具：burpsuite
