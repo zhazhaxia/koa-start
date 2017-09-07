@@ -23,7 +23,7 @@
 
 - http协议
 
-	请求头：ua，cookie，编码信息，referrer
+	请求头：ua，cookie，编码信息，Referer
 
 	响应头：server，cookie，Access-Control-Allow-Credentials，Access-Control-Allow-Origin，返回码
 
@@ -109,7 +109,7 @@
 
 - url
 	
-	<scheme>://<netloc>/<path>?<query>#<fragment>
+	`<scheme>://<netloc>/<path>?<query>#<fragment>`
 
 - HTML
 
@@ -148,7 +148,12 @@
 	- 常用的payload
 
 		```
-
+			<iframe src="data:text/html,<script>alert(1)</script>"></iframe>
+			<img src=1 onerror=alert(9)
+			<iframe onload="alert(1)"></iframe>
+			<iframe src="javascript:alert(1)"></iframe>
+			<iframe src="data:text/html,&lt;script&gt;alert(1)&lt;/script&gt;"></iframe>
+			<iframe src="data:text/html,&lt;script&gt;alert(1)&lt;/script&gt;"></iframe>
 		```
 
 	- payload 的成功率
@@ -157,3 +162,11 @@
 
 		`><script>alert(9)</script>`效果好
 
+
+---
+
+xss challenges:http://xss-quiz.int21h.jp/
+
+xss 挑战：http://test.xss.tv/
+
+xss编解码：http://xss.tv/index.php?do=encode-1
