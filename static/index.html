@@ -35,7 +35,7 @@
 		},
 		getTest:function () {
 			$.ajax({
-				url:'http://127.0.0.1:3030/router/test/getTest',
+				url:'http://127.0.0.1:3030/router/getTest',
 				data:{
 					name:'milu'
 				},
@@ -48,7 +48,19 @@
 			})
 		},
 		postTest:function () {
-			
+			$.ajax({
+				url:'http://127.0.0.1:3030/router/postTest',
+				type:'post',
+				data:{
+					name:'milu'
+				},
+				success:function (res) {
+					console.log('res',res)
+				},
+				error:function (err) {
+					console.log('err',err)
+				}
+			})
 		}
 	}
 	exports.init();

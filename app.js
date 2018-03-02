@@ -16,4 +16,4 @@ app.use(async (ctx) => {
 })
 var port = 3030;
 app.listen(port)
-console.log('server is runing on :port '+port)
+console.log('server is runing on 127.0.0.1:'+port)

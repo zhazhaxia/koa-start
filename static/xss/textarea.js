@@ -10,3 +10,5 @@ function htmlEncode (str) {
 }
 
 alert(htmlEncode('<script>alert(0)</script>'))
+
+
