@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>canvas</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <meta name="author" content="Tencent-ISUX-Music" />
+    <meta name="Copyright" content="Tencent" />
+    <!--关键字和描述一定要写-->
+    <meta name="description" content="全民K歌" />
+    <meta name="keywords" content="KTV,直播,唱歌,K歌,录歌,听歌,放歌,练歌,唱K,全民K歌" />
+    <!--如果该页面只适合在手机上进行浏览，请添加以下代码-->
+    <meta name="applicable-device" content="mobile">
+    <style type="text/css">
+      body,canvas{
+        padding:0;
+        margin:0;
+      }
+    </style>
+</head>
+
+<body>
+<script type="text/javascript">
+
+const bgpicSrc = 'http://localhost:3030/images/bg2019.png'
+const headSrc = 'http://localhost:3030/images/head.jpg'
+const qrcodeSrc = 'http://localhost:3030/images/qrcode.png'
+const facedefaultSrc = 'http://localhost:3030/images/face_default.png'
+const WIDTH = 400;
+const HEIGHT = 606;
+const HEAD_HEIGHT = 64;
+const QRCODE_HEIGHT = 75;
+getImg();
+async function getImg(){
+
+  let canvas = document.createElement("canvas");
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  let cxt = canvas.getContext("2d");
+  let bgpicImg = await imgLoad(bgpicSrc);
+  let headImg = await imgLoad(headSrc);
+  let qrcodecImg = await imgLoad(qrcodeSrc);
+
+  cxt.drawImage(bgpicImg,0,0,bgpicImg.offsetWidth,bgpicImg.offsetHeight,0,0,WIDTH,HEIGHT);
+  cxt.drawImage(headImg,0,0,headImg.offsetWidth,headImg.offsetHeight,WIDTH/2-HEAD_HEIGHT/2,140,HEAD_HEIGHT,HEAD_HEIGHT);
+  cxt.drawImage(qrcodecImg,0,0,qrcodecImg.offsetWidth,qrcodecImg.offsetHeight,310,526,QRCODE_HEIGHT,QRCODE_HEIGHT);
+  bgpicImg.style.display="none";
+  headImg.style.display="none";
+  qrcodecImg.style.display="none";
+  cxt.save();
+
+  canvas_text(cxt, "工会名称", "bold 18px Arial", "#000", 200,253);
+  canvas_text(cxt, "2.14万闪耀值", "100 16px Arial", "#000", 200,275);
+
+  cxt.fillStyle = "#000";
+  cxt.fillRect(75,305,250,50)
+  canvas_text(cxt, "年度钻石工会", "900 32px 微软雅黑", "#fff", 200,330);
+  canvas_text(cxt, "淘汰赛第一轮", "100 16px 微软雅黑", "#000", 200,370);
+
+  canvas_text(cxt, "44", "900 42px 微软雅黑", "#000", 120,440);
+  canvas_text(cxt, "组内积分排名", "100 16px Arial", "#000", 120,470);
+
+  canvas_text(cxt, "22", "900 42px 微软雅黑", "#000", 280,440);
+  canvas_text(cxt, "距离前一名差距", "100 16px Arial", "#000", 280,470);
+
+  canvas_text(cxt, "来全民K歌年度盛典支持该工会", "300 20px 微软雅黑", "#fff", 25,550,'start');
+  canvas_text(cxt, "长按二维码识别进入年度盛典", "100 16px Arial", "#fff", 25,575,'start');
+  document.body.appendChild(canvas);
+
+}
+async function imgLoad(src=""){
+  return new Promise((resolve)=>{
+    let img = new Image();
+    img.src = src;
+    // img.style.display = "none";
+    img.style.opacity = 0;
+    img.style.position = 'fixed';
+    img.style.zIndex = -1;
+    img.onload = ()=>{
+      document.body.appendChild(img);
+      resolve(img);
+    }
+    img.onerror=()=>{
+      img.src = facedefaultSrc;
+      resolve(img)
+    }
+  })
+}
+
+ // Canvas居中写字，参数（context对象，要写的字，字体，颜色，绘制的高度）
+function canvas_text(_paint, _text, _fontSzie, _color, _width=0,_height=0,align="center") {
+    _paint.font = 'normal normal ' + _fontSzie;
+    _paint.fillStyle = _color;
+    _paint.textAlign = align||"center";
+    _paint.textBaseline = "middle";
+    _paint.fillText(_text, _width, _height);
+}
+</script>
+
+</body>
+</html>

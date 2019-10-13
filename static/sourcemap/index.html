@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>demo1-simple-webpack</title>
+    
+  </head>
+    <script type="text/javascript">
+    	window.addEventListener('error', function (e) {
+        console.log('lineno: ', e.lineno, ' colno: ', e.colno)
+        console.log('errorMessage:', e.message)
+        console.log('errorFile:', e.filename)
+    }, true)
+    </script>
+  <body>
+    <div id="app"></div>
+    <script src="../public/js/sourcemap.js"></script>
+  </body>
+</html>
